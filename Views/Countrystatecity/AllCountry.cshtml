@@ -1,0 +1,27 @@
+﻿@model List<Student_mgmt_Model.Context.Country>
+@{
+    ViewBag.Title = "AllCountry";
+}
+<h3 class="text-center"></h3>
+        <table class="table table-hover ">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>FirstName</th>
+                   
+                </tr>
+            </thead>
+            @foreach (var data in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@data.CountryId</td>
+                        <td>@data.CountryName</td>
+                       
+                    </tr>
+                </tbody>
+            }
+
+        </table>
+
+

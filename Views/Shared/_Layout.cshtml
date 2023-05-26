@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/jquery")
+
+    <script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@html.actionlink("application name", "index", "home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*<li>@html.actionlink("home", "index", "home")</li>
+                    <li>@html.actionlink("about", "about", "home")</li>
+                    <li>@html.actionlink("contact", "contact", "home")</li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="sidenav">
+        
+            <button class="dropdown-btn">
+                Student
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @Html.ActionLink("Add Student", "Addstudnt", "Student")
+                @Html.ActionLink("Display Student", "AllStudent", "Student")
+                @Html.ActionLink("Edit Student", "AllStudent", "Student")
+                @Html.ActionLink("Delete Student", "AllStudent", "Student")
+
+            </div>
+            <button class="dropdown-btn">
+                Teacher
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @Html.ActionLink("Add Teacher", "AddTeacher", "Student")
+                @Html.ActionLink("Display Teacher", "AllTeacher", "Student")
+                @Html.ActionLink("Edit Teacher", "AllTeacher", "Student")
+                @Html.ActionLink("Delete Teacher", "AllTeacher", "Student")
+
+            </div>
+            <button class="dropdown-btn">
+                Country
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @Html.ActionLink("Country List", "AllCountry", "Countrystatecity")
+
+            </div>
+            <button class="dropdown-btn">
+                State
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @Html.ActionLink("State List", "AllState", "Countrystatecity")
+
+            </div>
+            <button class="dropdown-btn">
+                City
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @Html.ActionLink("City List", "AllCity", "Countrystatecity")
+
+
+
+            </div>
+            <button class="dropdown-btn">
+                Quiz
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @Html.ActionLink("Play Quiz", "Quiz", "Quiz")
+
+
+
+            </div>
+        </div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

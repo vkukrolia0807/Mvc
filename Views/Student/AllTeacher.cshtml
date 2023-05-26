@@ -1,0 +1,54 @@
+﻿@model List<Student_mgmt_Model.Context.Teacher>
+@{
+    ViewBag.Title = "AllTeacher";
+}
+
+<h3 class="text-center">
+    Teacher
+</h3>
+<table class="table table-hover ">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>FirstName</th>
+            <th>lastname</th>
+            <th>phone number</th>
+            <th>gender</th>
+            <th>email ID</th>
+            <th>birthdate</th>
+            <th>address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>country</th>
+            <th>Subject</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    @foreach (var data in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@data.Id</td>
+                <td>@data.FirstName</td>
+                <td>@data.LastName</td>
+                <td>@data.PhoneNumber</td>
+                <td>@data.Gender</td>
+                <td>@data.EmailId</td>
+                <td>@data.BirthDate</td>
+                <td>@data.Address</td>
+                <td>@data.city</td>
+                <td>@data.state</td>
+                <td>@data.Country</td>
+                <td>@data.Subject</td>
+                <td>
+                    @Html.ActionLink("Edit", "EditTeacher", new { id = data.Id }) |
+
+                    @Html.ActionLink("Delete", "DeleteTeacher", new { id = data.Id })
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+

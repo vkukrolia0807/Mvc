@@ -1,0 +1,57 @@
+﻿@model PagedList<Student_mgmt_Model.Context.Student>
+    @using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "AllStudent";
+}
+
+
+
+<h3 class="text-center">
+    Student
+</h3>
+<table class="table table-hover ">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>FirstName</th>
+            <th>lastname</th>
+            <th>email ID</th>
+            <th>gender</th>
+            <th>phone number</th>
+            <th>birthdate</th>
+            <th>address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>country</th>
+            <th>Teacher</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    @foreach (var data in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@data.Id</td>
+                <td>@data.FirstName</td>
+                <td>@data.LastName</td>
+                <td>@data.PhoneNumber</td>
+                <td>@data.Gender</td>
+                <td>@data.EmailId</td>
+                <td>@data.BirthDate</td>
+                <td>@data.Address</td>
+                <td>@data.city</td>
+                <td>@data.state</td>
+                <td>@data.Country</td>
+                <td>@data.teacher</td>
+                <td>
+                    @Html.ActionLink("Edit", "EditStudent", new { id = data.Id }) |
+
+                    @Html.ActionLink("Delete", "DeleteStudent", new { id = data.Id })
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+@Html.PagedListPager(Model,i=>Url.Action("AllStudent","Student",new { i,search=Request.QueryString["search"]}))
